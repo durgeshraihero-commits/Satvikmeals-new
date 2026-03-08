@@ -41,7 +41,7 @@ router.post('/create', protect, requirePhone, async (req, res) => {
       buyer_name:   user.name,
       email:        user.email,
       phone:        user.phone,
-      redirect_url: `${process.env.BASE_URL}/payment-success.html`,
+      redirect_url: `https://satvikmeals-4t7p.onrender.com/payment-success.html`,
       send_email:   'false',
       send_sms:     'false',
       allow_repeated_payments: 'false'
