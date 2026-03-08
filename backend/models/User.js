@@ -1,0 +1,38 @@
+const mongoose = require('mongoose');
+
+const genCode = () => Math.random().toString(36).substring(2,8).toUpperCase();
+
+const subscriptionSchema = new mongoose.Schema({
+  planId:    { type: mongoose.Schema.Types.ObjectId, ref: 'Plan' },
+  planName:  String,
+  planType:  String,
+  startDate: Date,
+  endDate:   Date,
+  status:    { type: String, enum: ['active','paused','expired','cancelled'], default: 'active' },
+  pausedAt:  Date,
+  paymentId: String
+}, { timestamps: true });
+
+const referredUserSchema = new mongoose.Schema({
+  email:       String,
+  name:        String,
+  joinedAt:    Date,
+  hasPurchased:{ type: Boolean, default: false },
+  planName:    String,
+  rewardPaid:  { type: Boolean, default: false }
+});
+
+const userSchema = new mongoose.Schema({
+  name:          { type: String, required: true },
+  email:         { type: String, required: true, unique: true, lowercase: true },
+  googleId:      { type: String, sparse: true },
+  phone:         { type: String, validate: { validator: v => !v || /^[6-9]\d{9}$/.test(v), message: 'Invalid phone' } },
+  role:          { type: String, enum: ['user','admin'], default: 'user' },
+  referralCode:  { type: String, unique: true, default: genCode },
+  referredBy:    { type: String, default: null },
+  coins:         { type: Number, default: 0 },
+  referredUsers: [referredUserSchema],
+  subscriptions: [subscriptionSchema]
+}, { timestamps: true });
+
+module.exports = mongoose.model('User', userSchema);
