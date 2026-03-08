@@ -70,7 +70,7 @@ main{padding-top:68px}
 <script>
 async function loadMenu() {
   try {
-    const res = await fetch('http://localhost:5000/api/menu/current');
+    const res = await fetch('/api/menu/current');
     const data = await res.json();
     const container = document.getElementById('menuContainer');
     if (!data.items || !data.items.length) {
