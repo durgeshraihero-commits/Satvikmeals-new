@@ -3,116 +3,238 @@
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Checkout — SatvikMeals</title>
+<link rel="icon" type="image/svg+xml" href="/logo-icon.svg"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:#FDFCF8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.card{background:white;border:1px solid #E5E2D8;border-radius:16px;padding:48px;max-width:460px;width:100%;animation:fadeUp 0.5s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:#1B4332;font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;margin-bottom:32px}
-.logo-mark{width:34px;height:34px;background:#1B4332;border-radius:7px;display:flex;align-items:center;justify-content:center}
-.logo-mark svg{width:18px;height:18px;fill:#FAF8F3}
-h1{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:#0F2D1F;margin-bottom:4px}
+body{font-family:'DM Sans',sans-serif;background:#FDFCF8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+.card{background:white;border:1px solid #E5E2D8;border-radius:16px;padding:36px 28px;max-width:460px;width:100%;animation:fadeUp 0.5s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:#1B4332;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:24px}
+.logo img{width:32px;height:32px;border-radius:6px}
+h1{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:300;color:#0F2D1F;margin-bottom:4px}
 h1 em{font-style:italic;color:#2D6A4F}
-.subtitle{font-size:0.845rem;color:#7A7A6E;font-weight:300;margin-bottom:28px}
-.summary{background:#F0FAF2;border:1px solid #D8F3DC;border-radius:10px;padding:20px;margin-bottom:24px}
-.summary-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #E5E2D8;font-size:0.855rem}
-.summary-row:last-child{border:none;font-weight:500;color:#1B4332;font-size:0.95rem;padding-top:12px}
-.summary-label{color:#7A7A6E;font-weight:300}
-.coin-row{color:#B5965A!important}
-.phone-section{margin-bottom:24px}
-.phone-section label{display:block;font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#7A7A6E;margin-bottom:6px}
-.phone-section input{width:100%;height:44px;border:1px solid #E5E2D8;border-radius:8px;padding:0 14px;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none}
-.phone-section input:focus{border-color:#40916C}
-.phone-note{font-size:0.75rem;color:#7A7A6E;font-weight:300;margin-top:6px}
-.btn-pay{width:100%;height:50px;background:#1B4332;color:white;border:none;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:10px}
+.subtitle{font-size:0.845rem;color:#7A7A6E;font-weight:300;margin-bottom:20px}
+.steps{display:flex;align-items:center;gap:6px;margin-bottom:22px}
+.step{display:flex;align-items:center;gap:5px;font-size:0.72rem;color:#7A7A6E}
+.step-num{width:20px;height:20px;border-radius:50%;background:#E5E2D8;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:500;flex-shrink:0}
+.step.done .step-num{background:#1B4332;color:white}
+.step.active .step-num{background:#2D6A4F;color:white}
+.step.active{color:#1B4332;font-weight:500}
+.step-line{height:1px;flex:1;background:#E5E2D8}
+.user-info{background:#F0FAF2;border:1px solid #D8F3DC;border-radius:9px;padding:12px 14px;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.user-avatar{width:36px;height:36px;border-radius:50%;background:#1B4332;color:white;display:flex;align-items:center;justify-content:center;font-size:0.95rem;font-weight:500;flex-shrink:0}
+.user-name{font-size:0.875rem;font-weight:400;color:#1A1A16}
+.user-email{font-size:0.75rem;color:#7A7A6E;font-weight:300}
+.summary{background:#F0FAF2;border:1px solid #D8F3DC;border-radius:10px;padding:18px;margin-bottom:18px}
+.s-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #E5E2D8;font-size:0.845rem}
+.s-row:last-child{border:none;font-weight:500;font-size:0.92rem;color:#1B4332;padding-top:10px}
+.s-label{color:#7A7A6E;font-weight:300}
+.coin-row .s-label,.coin-row span:last-child{color:#B5965A;font-weight:500}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#7A7A6E;margin-bottom:6px}
+.field input{width:100%;height:46px;border:1px solid #E5E2D8;border-radius:8px;padding:0 14px;font-family:'DM Sans',sans-serif;font-size:1rem;outline:none;transition:border-color 0.2s;-webkit-appearance:none}
+.field input:focus{border-color:#40916C;box-shadow:0 0 0 3px rgba(64,145,108,0.1)}
+.field input.error{border-color:#c53030}
+.field .hint{font-size:0.72rem;color:#7A7A6E;margin-top:5px;font-weight:300}
+.phone-saved{background:#F0FAF2;border:1px solid #D8F3DC;border-radius:8px;padding:10px 14px;font-size:0.845rem;color:#1B4332;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.btn-pay{width:100%;height:50px;background:#1B4332;color:white;border:none;border-radius:9px;font-family:'DM Sans',sans-serif;font-size:0.875rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
 .btn-pay:hover{background:#2D6A4F}
-.btn-pay:disabled{background:#ccc;cursor:not-allowed}
-.btn-pay svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
-.secure-note{text-align:center;font-size:0.75rem;color:#7A7A6E;font-weight:300;margin-top:12px}
-.back-link{display:block;text-align:center;margin-top:16px;font-size:0.8rem;color:#7A7A6E;text-decoration:none}
-.back-link:hover{color:#1B4332}
-#errMsg{background:#FFF5F5;border:1px solid #FED7D7;color:#c53030;padding:12px;border-radius:8px;font-size:0.845rem;margin-top:12px;display:none}
+.btn-pay:disabled{background:#9CA3AF;cursor:not-allowed}
+.secure{text-align:center;font-size:0.72rem;color:#7A7A6E;font-weight:300;margin-bottom:14px}
+.back{display:block;text-align:center;font-size:0.8rem;color:#7A7A6E;text-decoration:none}
+.back:hover{color:#1B4332}
+.err{background:#FFF5F5;border-left:3px solid #c53030;border-radius:6px;color:#c53030;padding:12px 14px;font-size:0.845rem;margin-top:12px;display:none}
+.info{background:#FFFBEB;border-left:3px solid #F59E0B;border-radius:6px;color:#92400E;padding:10px 14px;font-size:0.82rem;margin-bottom:14px;display:none}
 </style>
 </head>
 <body>
 <div class="card">
-  <a href="index.html" class="logo"><div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 5 4 9c0 2.5 1.2 4.7 3 6.1V20h10v-4.9c1.8-1.4 3-3.6 3-6.1 0-4-4-7-8-7z"/></svg></div>SatvikMeals</a>
-  <h1>Confirm <em>your order</em></h1>
-  <div class="subtitle">Review details and proceed to secure payment.</div>
-  <div class="summary" id="summary"></div>
-  <div class="phone-section" id="phoneSection" style="display:none">
-    <label>Mobile Number</label>
-    <input type="tel" id="phoneInput" placeholder="10-digit number" maxlength="10"/>
-    <div class="phone-note">Required for delivery coordination</div>
+  <a href="index.html" class="logo">
+    <img src="/logo-icon.svg" alt="SatvikMeals"/>
+    SatvikMeals
+  </a>
+  <div class="steps">
+    <div class="step done"><div class="step-num">✓</div>Plan</div>
+    <div class="step-line"></div>
+    <div class="step active"><div class="step-num">2</div>Confirm</div>
+    <div class="step-line"></div>
+    <div class="step"><div class="step-num">3</div>Pay</div>
   </div>
+  <h1>Confirm <em>order</em></h1>
+  <div class="subtitle">Review details before proceeding to payment.</div>
+  <div class="user-info" id="userInfo" style="display:none">
+    <div class="user-avatar" id="uAvatar">?</div>
+    <div>
+      <div class="user-name" id="uName">Loading...</div>
+      <div class="user-email" id="uEmail"></div>
+    </div>
+  </div>
+  <div class="summary" id="summary">Loading...</div>
+  <div class="info" id="infoBox"></div>
+
+  <!-- Phone number section -->
+  <div id="phoneSavedBox" class="phone-saved" style="display:none">
+    ✓ <span id="phoneSavedText"></span>
+  </div>
+  <div class="field" id="phoneField" style="display:none">
+    <label>Mobile Number *</label>
+    <input type="tel" id="phoneInput" placeholder="Enter 10-digit number" maxlength="10" inputmode="numeric" pattern="[0-9]*"/>
+    <div class="hint">Required for delivery. We will not spam you.</div>
+  </div>
+
   <button class="btn-pay" id="payBtn" onclick="pay()">
-    Proceed to Payment
-    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Pay ₹<span id="btnAmount">...</span> via Instamojo
   </button>
-  <div class="secure-note">Secured by Instamojo. Your payment info is never stored.</div>
-  <a href="plans.html" class="back-link">← Back to plans</a>
-  <div id="errMsg"></div>
+  <div class="secure">🔒 Secured by Instamojo — card details never stored on our servers</div>
+  <a href="plans.html" class="back">← Back to plans</a>
+  <div class="err" id="errMsg"></div>
 </div>
 <script>
 const API   = '';
 const token = localStorage.getItem('satvikToken');
-if (!token) window.location.href = 'login.html?redirect=plans.html';
+if (!token) { window.location.href = 'login.html?redirect=plans.html'; }
 
-const p = new URLSearchParams(window.location.search);
+const p        = new URLSearchParams(window.location.search);
 const planId   = p.get('planId');
-const planName = p.get('planName');
-const price    = parseInt(p.get('price'));
-const coins    = parseInt(p.get('coins')||0);
+const planName = decodeURIComponent(p.get('planName') || '');
+const price    = parseInt(p.get('price') || 0);
+const coins    = parseInt(p.get('coins') || 0);
 const final    = price - coins;
 
 let userPhone = null;
 
-async function init() {
-  try {
-    const r = await fetch(API+'/api/user/dashboard',{headers:{Authorization:'Bearer '+token}});
-    const d = await r.json();
-    userPhone = d.phone;
-    if (!d.phone) document.getElementById('phoneSection').style.display='block';
-  } catch(e){}
+document.getElementById('btnAmount').textContent = final;
 
-  let html = `<div class="summary-row"><span class="summary-label">Plan</span><span>${decodeURIComponent(planName)}</span></div>
-    <div class="summary-row"><span class="summary-label">Original Price</span><span>&#8377;${price}</span></div>`;
-  if (coins>0) html += `<div class="summary-row coin-row"><span class="summary-label">Coins Discount</span><span>- &#8377;${coins}</span></div>`;
-  html += `<div class="summary-row"><span>Total Payable</span><span>&#8377;${final}</span></div>`;
+async function init() {
+  if (!planId) { showErr('No plan selected.'); return; }
+  try {
+    const r = await fetch(API + '/api/user/dashboard', {
+      headers: { Authorization: 'Bearer ' + token }
+    });
+    if (r.status === 401) { localStorage.clear(); window.location.href = 'login.html'; return; }
+    const d = await r.json();
+    userPhone = d.phone || null;
+
+    document.getElementById('userInfo').style.display = 'flex';
+    document.getElementById('uAvatar').textContent = (d.name||'U')[0].toUpperCase();
+    document.getElementById('uName').textContent   = d.name || 'User';
+    document.getElementById('uEmail').textContent  = d.email || '';
+
+    if (userPhone) {
+      // Phone already saved — show it
+      document.getElementById('phoneSavedBox').style.display = 'flex';
+      document.getElementById('phoneSavedText').textContent  = 'Delivering to: +91 ' + userPhone;
+    } else {
+      // Phone not saved — show input
+      document.getElementById('phoneField').style.display = 'block';
+      showInfo('Please add your phone number — needed for delivery coordination.');
+    }
+  } catch(e) {
+    showInfo('Could not load user info. Make sure you are connected.');
+  }
+
+  // Build order summary
+  let html = `
+    <div class="s-row"><span class="s-label">Plan</span><span>${planName}</span></div>
+    <div class="s-row"><span class="s-label">Price</span><span>₹${price}</span></div>`;
+  if (coins > 0) {
+    html += `<div class="s-row coin-row"><span class="s-label">Coins Discount</span><span>− ₹${coins}</span></div>`;
+  }
+  html += `<div class="s-row"><span>Total Payable</span><span>₹${final}</span></div>`;
   document.getElementById('summary').innerHTML = html;
 }
 
 async function pay() {
   const btn = document.getElementById('payBtn');
-  btn.disabled=true; btn.innerHTML='Creating payment request...';
+  hideErr();
 
-  // Save phone if entered
-  const phoneInput = document.getElementById('phoneInput').value.trim();
-  if (!userPhone && phoneInput) {
-    if (!/^[6-9]\d{9}$/.test(phoneInput)) { showErr('Enter valid 10-digit phone number'); btn.disabled=false; btn.innerHTML='Proceed to Payment'; return; }
-    const pr = await fetch(API+'/api/auth/phone',{method:'PATCH',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({phone:phoneInput})});
-    if (!pr.ok) { showErr('Could not save phone number'); btn.disabled=false; btn.innerHTML='Proceed to Payment'; return; }
-  } else if (!userPhone && !phoneInput) {
-    showErr('Please enter your phone number'); btn.disabled=false; btn.innerHTML='Proceed to Payment'; return;
+  // If phone not saved, save it first
+  if (!userPhone) {
+    const phoneVal = document.getElementById('phoneInput').value.trim();
+    if (!phoneVal) {
+      document.getElementById('phoneInput').classList.add('error');
+      showErr('Please enter your mobile number to continue.');
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(phoneVal)) {
+      document.getElementById('phoneInput').classList.add('error');
+      showErr('Enter a valid 10-digit Indian mobile number (starting with 6-9).');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Saving phone number...';
+
+    try {
+      const pr = await fetch(API + '/api/auth/phone', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
+        },
+        body: JSON.stringify({ phone: phoneVal })
+      });
+      const pd = await pr.json();
+      if (!pr.ok) {
+        showErr(pd.message || 'Could not save phone number. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = 'Pay ₹' + final + ' via Instamojo';
+        return;
+      }
+      userPhone = phoneVal;
+      // Update UI
+      document.getElementById('phoneField').style.display = 'none';
+      document.getElementById('phoneSavedBox').style.display = 'flex';
+      document.getElementById('phoneSavedText').textContent = 'Delivering to: +91 ' + phoneVal;
+      document.getElementById('infoBox').style.display = 'none';
+    } catch(e) {
+      showErr('Network error. Please check your connection.');
+      btn.disabled = false;
+      btn.innerHTML = 'Pay ₹' + final + ' via Instamojo';
+      return;
+    }
   }
 
+  btn.disabled = true;
+  btn.textContent = 'Creating payment request...';
+
   try {
-    const r = await fetch(API+'/api/payment/create',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
-      body: JSON.stringify({ planId, useCoins: coins>0 })
+    const r = await fetch(API + '/api/payment/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token
+      },
+      body: JSON.stringify({ planId, useCoins: coins > 0 })
     });
     const d = await r.json();
-    if (!r.ok) { showErr(d.message); btn.disabled=false; btn.innerHTML='Proceed to Payment'; return; }
+    if (!r.ok) {
+      showErr(d.message || 'Payment failed. Please try again.');
+      btn.disabled = false;
+      btn.innerHTML = 'Pay ₹' + final + ' via Instamojo';
+      return;
+    }
+    btn.textContent = '✓ Redirecting to payment...';
     window.location.href = d.paymentUrl;
   } catch(e) {
-    showErr('Network error. Is server running?');
-    btn.disabled=false; btn.innerHTML='Proceed to Payment';
+    showErr('Cannot reach server. Please check your connection.');
+    btn.disabled = false;
+    btn.innerHTML = 'Pay ₹' + final + ' via Instamojo';
   }
 }
 
-function showErr(msg){ const e=document.getElementById('errMsg'); e.textContent=msg; e.style.display='block'; }
+function showErr(msg) {
+  const e = document.getElementById('errMsg');
+  e.textContent = msg; e.style.display = 'block';
+  e.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+function hideErr() { document.getElementById('errMsg').style.display = 'none'; }
+function showInfo(msg) {
+  const b = document.getElementById('infoBox');
+  b.textContent = msg; b.style.display = 'block';
+}
+
 init();
 </script>
 </body>
